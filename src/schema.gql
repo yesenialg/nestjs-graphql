@@ -2,10 +2,52 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Todo {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
+"""Todo quick aggregations"""
+type AggregationsType {
+  total: Int!
+  pending: Int!
+  completed: Int!
+  totalTodoscompleted: Int! @deprecated(reason: "Most use completed instead")
+}
+
 type Query {
   """Return Hola Mundo"""
   hello: String!
 
   """Return a number from zero to argument to (default 6)"""
   randomFromZeroTo(to: Int): Int!
+  AllTodos(status: Boolean): [Todo!]!
+  TodoById(id: Int!): Todo!
+  totalTodos: Int!
+  completedTodos: Int!
+  pendingTodos: Int!
+  AggregationsTodos: AggregationsType!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+  deleteTodo(id: Int!): Boolean!
+}
+
+input CreateTodoInput {
+  """What needs to be done"""
+  description: String!
+}
+
+input UpdateTodoInput {
+  """id"""
+  id: Int!
+
+  """What needs to be done"""
+  description: String
+
+  """Status"""
+  done: Boolean
 }
