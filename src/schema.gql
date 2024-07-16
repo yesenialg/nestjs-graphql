@@ -1,0 +1,11 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  """Return Hola Mundo"""
+  hello: String!
+
+  """Return a number from zero to argument to (default 6)"""
+  randomFromZeroTo(to: Int): Int!
+}
